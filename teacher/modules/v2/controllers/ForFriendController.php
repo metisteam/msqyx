@@ -243,6 +243,7 @@ class ForFriendController extends MainController
         }
     }
 
+    //账号延期
     public function actionSetMaster($studio_id)
     {
         $modelClass = $this->modelClass;
