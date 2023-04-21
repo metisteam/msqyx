@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+.ofBox{ width:581px;position: absolute; left:50%; top:271px; z-index: 1001; opacity:1; margin-left:-290px;}
+.ofBox a{ text-decoration:none;}
+.fcolfb6a01 a{color:#fb6a01;}
+.ffl{ float:left;}
+.ofBox_con{ font-family:"微软雅黑"; font-size:22px; color:#bfbfbf; padding:18px 0 0 34px; line-height:50px; width:428px; position:relative;}
+.fhelp{ background:url(../../images/newLive/v2_06.png) 0 0 no-repeat; width:139px; height:40px; position:absolute; left:172px; top:73px; color:#FFF; line-height:40px; padding-left:36px;}
+.fml185{ margin-left:185px;}
+.ofBox_con .fcolfb6a01{ color:#fb6a01;cursor:pointer}
+.ofmask { position: absolute; left: 0; top: 0; z-index: 1000; background: #000; opacity: 0.7; filter:alpha(opacity=70); 
+-moz-opacity:0.7; width:100%; height:100%; }
+
+
+#embox{
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+    background: #FFF;
+    border-top: 1px solid #dcdcdc;
+}
+#embox table{
+    width: 100%;
+    margin: 5px 0;
+}
+#embox table td{
+    text-align: center;
+}
+#embox table td img{
+    border: 1px solid #FFF;
+    width: 20px;
+}
+#embox table td img:hover{
+    border: 1px solid #33aff6;
+}
+
+.ppt-mask{background: #FFF url(../../images/newLive/nothing.png) center no-repeat; display: block;}
+.video-mask{background: #FFF url(../../images/newLive/camera.jpg) center no-repeat; display: block;}
+.ppt-mask p{text-align: center; position: absolute; top: 50%; width: 100%; font-size: 26px; color: #333;}
+.live-right .peo-chat .pchat{color: #ff480d;}
+
+.not-mines{display: none;}
+
+
+/*--huifang_doclist--*/
+.doclist{position: absolute; z-index: 999; bottom: 80px; left: 290px; background: #29445A; padding: 10px 0 10px 0;}
+.doclist li{width: 90px; height: 66px; display: block; float: left; margin: 0 5px; overflow: hidden; border: 3px solid #CCC; cursor: pointer; position: relative; text-align: center;}
+.doclist li img{height: 100%;}
+.doclist .prev,.doclist .next{position: absolute; display: block; width: 20px; height: 92px; line-height: 92px; background: #333; color: #FFF; text-align: center;}
+.doclist .prev:hover,.doclist .next:hover{text-decoration: none; background: #000;}
+.doclist .prev{left: -20px; bottom: 0;}
+.doclist .next{right: -20px; bottom: 0;}
+.video-middle .l-m-b .listbtn{background: url(../../images/newLive/listbtn.png) 1px 2px no-repeat;}
+.doclist .ppttime{position: absolute; z-index: 2; bottom: -1px; left: -1px; width: 89px; height: 20px; line-height: 20px; background: #666; background: rgba(0, 0, 0, 0.5); text-align: right; padding-right: 5px; color: #FFF;}
+.doclist li.active,.doclist li.active:hover{border-color: #33aff6;}
+.doclist li:hover{border-color: #999;}
+.doclist .num{position: absolute; bottom: 1px; left: 3px; z-index: 3; color: #FFF;}
+
+.chat-content img{width: 20px; margin: 0 2px;}
+
+
+
+
+
+
+
+
+
+
+
