@@ -37,33 +37,33 @@ class ForFriendController extends MainController
             $new = $value->toArray();
 
             $NewList[] = array(
-                'id'          => $value->id,
-                'name'        => $value->name,
+                'id' => $value->id,
+                'name' => $value->name,
                 'teacherList' => array(
                     array(
-                        'id'         => 1,
-                        'title'      => '老师总数',
-                        'number'     => $value->teacher_num,
-                        'param'      => 'teacher_add_num',
+                        'id' => 1,
+                        'title' => '老师总数',
+                        'number' => $value->teacher_num,
+                        'param' => 'teacher_add_num',
                         'otherArray' => array(
                             array(
-                                'id'     => 1,
-                                'title'  => '已生成',
+                                'id' => 1,
+                                'title' => '已生成',
                                 'number' => $new['teacher_sc']
                             ),
                             array(
-                                'id'     => 2,
-                                'title'  => '未使用',
+                                'id' => 2,
+                                'title' => '未使用',
                                 'number' => $new['not_teacher_num']
                             ),
                             array(
-                                'id'     => 3,
-                                'title'  => '已激活',
+                                'id' => 3,
+                                'title' => '已激活',
                                 'number' => $new['teacher_jh']
                             ),
                             array(
-                                'id'     => 4,
-                                'title'  => '未激活',
+                                'id' => 4,
+                                'title' => '未激活',
                                 'number' => $new['teacher_wjh']
                             )
                         ),
@@ -71,85 +71,85 @@ class ForFriendController extends MainController
                 ),
                 'studentList' => array(
                     array(
-                        'id'         => 2,
-                        'title'      => '1年总数',
-                        'number'     => $value->one_year_num,
-                        'param'      => 'one',
+                        'id' => 2,
+                        'title' => '1年总数',
+                        'number' => $value->one_year_num,
+                        'param' => 'one',
                         'otherArray' => array(
                             array(
-                                'id'     => 1,
-                                'title'  => '已生成',
+                                'id' => 1,
+                                'title' => '已生成',
                                 'number' => $new['one_sc']
                             ),
                             array(
-                                'id'     => 2,
-                                'title'  => '未使用',
+                                'id' => 2,
+                                'title' => '未使用',
                                 'number' => $new['not_one_num']
                             ),
                             array(
-                                'id'     => 3,
-                                'title'  => '已激活',
+                                'id' => 3,
+                                'title' => '已激活',
                                 'number' => $new['one_jh']
                             ),
                             array(
-                                'id'     => 4,
-                                'title'  => '未激活',
+                                'id' => 4,
+                                'title' => '未激活',
                                 'number' => $new['one_wjh']
                             )
                         ),
                     ),
                     array(
-                        'id'         => 3,
-                        'title'      => '2年总数',
-                        'number'     => $value->two_years_num,
-                        'param'      => 'two',
+                        'id' => 3,
+                        'title' => '2年总数',
+                        'number' => $value->two_years_num,
+                        'param' => 'two',
                         'otherArray' => array(
                             array(
-                                'id'     => 1,
-                                'title'  => '已生成',
+                                'id' => 1,
+                                'title' => '已生成',
                                 'number' => $new['two_sc']
                             ),
                             array(
-                                'id'     => 2,
-                                'title'  => '未使用',
+                                'id' => 2,
+                                'title' => '未使用',
                                 'number' => $new['not_two_num']
                             ),
                             array(
-                                'id'     => 3,
-                                'title'  => '已激活',
+                                'id' => 3,
+                                'title' => '已激活',
                                 'number' => $new['two_jh']
                             ),
                             array(
-                                'id'     => 4,
-                                'title'  => '未激活',
+                                'id' => 4,
+                                'title' => '未激活',
                                 'number' => $new['two_wjh']
                             )
                         ),
                     ),
                     array(
-                        'id'         => 4,
-                        'title'      => '3年总数',
-                        'number'     => $value->three_years_num,
-                        'param'      => 'three',
+                        'id' => 4,
+                        'title' => '3年总数',
+                        'number' => $value->three_years_num,
+                        'param' => 'three',
                         'otherArray' => array(
                             array(
-                                'id'     => 1,
-                                'title'  => '已生成',
+                                'id' => 1,
+                                'title' => '已生成',
                                 'number' => $new['three_sc']
                             ),
                             array(
-                                'id'     => 2,
-                                'title'  => '未使用',
+                                'id' => 2,
+                                'title' => '未使用',
                                 'number' => $new['not_three_num']
                             ),
                             array(
-                                'id'     => 3,
-                                'title'  => '已激活',
+                                'id' => 3,
+                                'title' => '已激活',
                                 'number' => $new['three_jh']
                             ),
                             array(
-                                'id'     => 4,
-                                'title'  => '未激活',
+                                'id' => 4,
+                                'title' => '未激活',
                                 'number' => $new['three_wjh']
                             )
                         ),
@@ -166,10 +166,16 @@ class ForFriendController extends MainController
 
 
     //画室增加数量
-    public function actionAddNum($id, $type, $number, $text, $sign = "add")
+    public function actionAddNum()
     {
 
         $modelClass = $this->modelClass;
+
+        $id = Yii::$app->request->post('id');
+        $type = Yii::$app->request->post('type');
+        $number = Yii::$app->request->post('number');
+        $text = Yii::$app->request->post('text');
+        $sign = Yii::$app->request->post('sign');
 
         if ($text != '234249') {
             return SendMessage::sendErrorMsg("没有权限");
@@ -204,13 +210,13 @@ class ForFriendController extends MainController
 
         if ($sign == "add") {
             $number = $number ? $number : 0;
-            $msg    = "增加";
+            $msg = "增加";
         } elseif ($sign == "reduce") {
             if ($number >= $Studio->$key) {
                 $number = $Studio->$key;
             }
             $number = $number ? -$number : 0;
-            $msg    = "减少";
+            $msg = "减少";
         }
 
         if ($type == 'teacher_add_num') {
@@ -229,10 +235,13 @@ class ForFriendController extends MainController
     }
 
     //查询校长账号
-    public function actionGetMaster($studio_id)
+    public function actionGetMaster()
     {
         $modelClass = $this->modelClass;
-        $studio     = $modelClass::findOne($studio_id);
+
+        $studio_id = Yii::$app->request->post('studio_id');
+
+        $studio = $modelClass::findOne($studio_id);
 
         $master = $studio->getMaster($studio_id);
         if ($master) {
@@ -244,10 +253,11 @@ class ForFriendController extends MainController
     }
 
     //账号延期
-    public function actionSetMaster($studio_id)
+    public function actionSetMaster()
     {
         $modelClass = $this->modelClass;
-        $studio     = $modelClass::findOne($studio_id);
+        $studio_id = Yii::$app->request->post('studio_id');
+        $studio = $modelClass::findOne($studio_id);
 
         if ($studio->setMaster($studio_id)) {
             return SendMessage::sendSuccessMsg("延期成功");
@@ -257,10 +267,11 @@ class ForFriendController extends MainController
     }
 
     //重置后台密码
-    public function actionSetPassword($studio_id)
+    public function actionSetPassword()
     {
         $modelClass = $this->modelClass;
-        $studio     = $modelClass::findOne($studio_id);
+        $studio_id = Yii::$app->request->post('studio_id');
+        $studio = $modelClass::findOne($studio_id);
 
         if ($studio->setPassword($studio_id)) {
             return SendMessage::sendSuccessMsg("重置密码成功");
