@@ -22,17 +22,13 @@ class NewStudio extends \common\models\Studio
     public function getMaster($studio_id)
     {
         $master = \backend\models\Admin::find()
-            ->select("admin.phone_number,codes.id")
-            ->joinWith('codes')
-            ->where(['admin.studio_id' => $studio_id, 'admin.is_main' => 10, "admin.status" => 10])
-            ->orderBy('admin.id')
+            ->where(['studio_id' => $studio_id, 'is_main' => 10, "status" => 10])
+            ->orderBy('id')
             ->one();
-        $code = ActivationCode::findOne($master->id);
-
         return array(
             'phone_number' => $master->phone_number,
-            'code' => $code->code,
-            'due_time' => $code->due_time
+            'code' => $master->codes->code,
+            'due_time' => $master->codes->due_time
         );
 
     }
