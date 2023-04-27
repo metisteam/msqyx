@@ -14,7 +14,7 @@ class NewStudio extends \common\models\Studio
         $activation = ActivationCode::findOne(['code' => $code['code']]);
 
         $activation->is_active = 20;
-        $activation->is_first  = 0;
+        $activation->is_first = 0;
 
         return $activation->save();
     }
@@ -27,19 +27,19 @@ class NewStudio extends \common\models\Studio
             ->where(['admin.studio_id' => $studio_id, 'admin.is_main' => 10, "admin.status" => 10])
             ->orderBy('admin.id')
             ->one();
-
         $code = ActivationCode::findOne($master->id);
 
         return array(
             'phone_number' => $master->phone_number,
-            'code'         => $code->code
+            'code' => $code->code,
+            'due_time' => $code->due_time
         );
 
     }
 
     public function setPassword($studio_id)
     {
-        $master                = \backend\models\Admin::find()
+        $master = \backend\models\Admin::find()
             ->where(['studio_id' => $studio_id, 'is_main' => 10, 'status' => 10])
             ->one();
         $master->password_hash = "123456";
@@ -59,13 +59,13 @@ class NewStudio extends \common\models\Studio
                     ->count();
         };
 
-        $fields['teacher_sc']  = function () {
+        $fields['teacher_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 1])
                 ->count();
         };
-        $fields['teacher_jh']  = function () {
+        $fields['teacher_jh'] = function () {
 
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
@@ -80,13 +80,13 @@ class NewStudio extends \common\models\Studio
                 ->count();
         };
         //一年
-        $fields['one_sc']  = function () {
+        $fields['one_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 1])
                 ->count();
         };
-        $fields['one_jh']  = function () {
+        $fields['one_jh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 1, 'is_active' => 10])
@@ -114,13 +114,13 @@ class NewStudio extends \common\models\Studio
                     ->count();
         };
         //2年
-        $fields['two_sc']  = function () {
+        $fields['two_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 2])
                 ->count();
         };
-        $fields['two_jh']  = function () {
+        $fields['two_jh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 2, 'is_active' => 10])
@@ -134,19 +134,19 @@ class NewStudio extends \common\models\Studio
         };
 
         //3年
-        $fields['three_sc']      = function () {
+        $fields['three_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 3])
                 ->count();
         };
-        $fields['three_jh']      = function () {
+        $fields['three_jh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 3, 'is_active' => 10])
                 ->count();
         };
-        $fields['three_wjh']     = function () {
+        $fields['three_wjh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['type' => 2, 'activetime' => 3, 'is_active' => 20])
@@ -161,19 +161,19 @@ class NewStudio extends \common\models\Studio
         };
 
         //3月
-        $fields['three_yue_sc']      = function () {
+        $fields['three_yue_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.25])
                 ->count();
         };
-        $fields['three_yue_jh']      = function () {
+        $fields['three_yue_jh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.25, 'is_active' => 10])
                 ->count();
         };
-        $fields['three_yue_wjh']     = function () {
+        $fields['three_yue_wjh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.25, 'is_active' => 20])
@@ -188,19 +188,19 @@ class NewStudio extends \common\models\Studio
         };
 
         //1月
-        $fields['one_yue_sc']      = function () {
+        $fields['one_yue_sc'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.09])
                 ->count();
         };
-        $fields['one_yue_jh']      = function () {
+        $fields['one_yue_jh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.09, 'is_active' => 10])
                 ->count();
         };
-        $fields['one_yue_wjh']     = function () {
+        $fields['one_yue_wjh'] = function () {
             return (int)ActivationCode::find()
                 ->where(['status' => 10, 'studio_id' => $this->id])
                 ->andWhere(['activetime' => 0.09, 'is_active' => 20])

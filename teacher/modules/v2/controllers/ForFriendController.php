@@ -180,7 +180,6 @@ class ForFriendController extends MainController
         if ($text != '234249') {
             return SendMessage::sendErrorMsg("没有权限");
         }
-
         switch ($type) {
             case 'teacher_add_num':
                 $key = 'teacher_num';
@@ -207,7 +206,7 @@ class ForFriendController extends MainController
         }
 
         $Studio = $modelClass::findOne($id);
-
+     
         if ($sign == "add") {
             $number = $number ? $number : 0;
             $msg = "增加";
